@@ -19,10 +19,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
 
       nom: ['', Validators.required],
-      prenom: ['', Validators.required],
-      adresse: ['', Validators.required],
-      tel: ['', Validators.required],
       email: ['', Validators.required],
+      player: ['', Validators.required],
     })
   
     this.loading = true;
@@ -37,15 +35,14 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.invalid){
       console.log("error", this.registerForm.invalid);
     }else{
-      console.log(this.registerForm.controls);
-      console.log(this.registerForm.controls['adresse'].value);
 
       let value = [{
         nom : this.registerForm.controls['nom'].value,
         email : this.registerForm.controls['email'].value,
+        score : 0
       }]
-      localStorage.setItem("formulaire", JSON.stringify(value));
+
+      localStorage.setItem(this.registerForm.controls['player'].value, JSON.stringify(value));
     }
   }
-
 }

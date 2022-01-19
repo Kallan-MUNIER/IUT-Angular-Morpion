@@ -17,6 +17,7 @@ export class GameComponent implements OnInit {
   cases: Array<CaseMorpionComponent> = [];
 
   whoPlayed: number = 0;
+  whoPlayedName : String = "";
   turnNumber: number = 0;
 
   gameOver: boolean = false;
@@ -25,9 +26,13 @@ export class GameComponent implements OnInit {
   messageResult: String = "";
 
   constructor() {
+
     // Initialise les joueurs
-    this.p1 = new Player(0, "", "Joueur 1");
-    this.p2 = new Player(0, "", "Joueur 2");
+    let player1 = JSON.parse(localStorage.getItem('player1') || '[]');
+    let player2 = JSON.parse(localStorage.getItem('player2') || '[]');
+
+    this.p1 = new Player(player1[0]["score"], player1[0]["email"], player1[0]["nom"]);
+    this.p2 = new Player(player2[0]["score"], player2[0]["email"], player2[0]["nom"]);
 
     // Initialise le jeu
     this.initGame();
@@ -40,6 +45,7 @@ export class GameComponent implements OnInit {
   initGame() {
     // Choisi au hasard le joueur qui commence
     this.whoPlayed = this.randomNumber(1, 2);
+    this.changePlayer();
 
     // Clear les cases
     this.cases = [];
@@ -64,9 +70,11 @@ export class GameComponent implements OnInit {
     // Échange les joueurs
     if (this.whoPlayed === 1) {
       this.whoPlayed = 2;
+      this.whoPlayedName = this.p2.name;
     }
     else {
       this.whoPlayed = 1;
+      this.whoPlayedName = this.p1.name;
     }
 
     return this.whoPlayed;
@@ -132,9 +140,25 @@ export class GameComponent implements OnInit {
 
     if(value === 1){
       this.p1.addScore();
+
+      let value = [{
+        nom : this.p1.name,
+        email : this.p1.email,
+        score : this.p1.score
+      }]
+
+      localStorage.setItem("player1", JSON.stringify(value));
     }
     else if(value === 2){
       this.p2.addScore();
+
+      let value = [{
+        nom : this.p2.name,
+        email : this.p2.email,
+        score : this.p2.score
+      }]
+
+      localStorage.setItem("player2", JSON.stringify(value));
     }
 
     this.messageResult = this.getResultMessage();

@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Morpion</h2>
+            <hr>
+            <div class="game">
+                <p>C'est au tour du joueur {{whoPlayed}} !</p>
+                <app-case-morpion *ngFor="let case of cases; let i = index" [case]="case" (click)=playerClick(i)></app-case-morpion>
+            </div>
+        </div>
+
+        <div *ngIf="gameOver" class="col-md-12 resultModal">
+            <div class="result">
+                <h3>Terminé</h3>
+                <hr>
+                <p>{{messageResult}}</p>
+                <button class="btn btn-info" (click)=restartGame()>Nouvelle partie</button>
+            </div>
+        </div>
+    </div>
+</div>

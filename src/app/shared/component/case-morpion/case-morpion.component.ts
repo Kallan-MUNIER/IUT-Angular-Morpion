@@ -26,11 +26,11 @@ export class CaseMorpionComponent implements OnInit {
     }
 
     setState(value: string){
-        this.state = value;
+      this.state = value;
     }
 
     isUse() : boolean{
-        return this.state != "X";
+      return this.state != "X";
     }
 
   ngOnInit(): void {

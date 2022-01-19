@@ -75,6 +75,10 @@ export class GameComponent implements OnInit {
   // Vérifie si le joueur clique sur une case déjà cliqué ou non
   playerClick(caseClicked: number) {
 
+    if(this.gameOver){
+      return;
+    }
+
     if (this.cases[caseClicked].isUse()) {
       return;
     }
@@ -92,7 +96,7 @@ export class GameComponent implements OnInit {
   checkWin() {
 
     // Si 9 tours ont été joué, les joueurs sont égalité
-    if (this.turnNumber === 9) {
+    if (this.turnNumber === 10) {
       this.result(0);
     }
 
@@ -126,6 +130,13 @@ export class GameComponent implements OnInit {
     this.gameOver = true;
     this.gameResult = value;
 
+    if(value === 1){
+      this.p1.addScore();
+    }
+    else if(value === 2){
+      this.p2.addScore();
+    }
+
     this.messageResult = this.getResultMessage();
   }
 
@@ -133,10 +144,10 @@ export class GameComponent implements OnInit {
   getResultMessage(): string {
     if (this.gameOver) {
       if (this.gameResult === 0) {
-        return "Égalité";
+        return "Égalité.";
       }
 
-      return "Le joueur " + this.gameResult + " a gagné";
+      return "Le joueur " + this.gameResult + " a gagné.";
     }
 
     return "";

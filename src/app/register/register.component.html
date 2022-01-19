@@ -1,0 +1,25 @@
+<div class="formulaire">
+  <form class="example-form" *ngIf="loading" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName='nom'>
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName='email'>
+          </mat-form-field>
+        </td>
+      </tr>
+
+    </table>
+    <button type="submit" mat-raised-button color="primary">Envoyer</button>
+  </form>
+</div>

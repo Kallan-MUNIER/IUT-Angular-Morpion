@@ -14,13 +14,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProfilComponent } from './profil/profil.component';
 import { SharedModule } from './shared/shared.module';
 import {MatSelectModule} from '@angular/material/select';
+import { UpperCaseTitlePipe } from './upper-case-title.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     HomeComponent,
-    ProfilComponent
+    ProfilComponent,
+    UpperCaseTitlePipe
   ],
   imports: [
     BrowserModule,

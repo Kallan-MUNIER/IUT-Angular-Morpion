@@ -28,7 +28,6 @@ export class GameComponent implements OnInit {
   constructor() {
 
     // Initialise les joueurs
-
     this.p1 = new Player(JSON.parse(localStorage.getItem('player1') || '[]'));
     this.p2 = new Player(JSON.parse(localStorage.getItem('player2') || '[]'));
 

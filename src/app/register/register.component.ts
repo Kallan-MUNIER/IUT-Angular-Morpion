@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public formBuilder : FormBuilder) { }
+  constructor(public formBuilder : FormBuilder, private router : Router) { }
 
   public registerForm!: FormGroup;
   public submitted = false;
@@ -18,8 +19,7 @@ export class RegisterComponent implements OnInit {
 
     this.registerForm = this.formBuilder.group({
 
-      nom: ['', Validators.required],
-      email: ['', Validators.required],
+      name: ['', Validators.required],
       player: ['', Validators.required],
     })
   
@@ -36,13 +36,14 @@ export class RegisterComponent implements OnInit {
       console.log("error", this.registerForm.invalid);
     }else{
 
-      let value = [{
-        nom : this.registerForm.controls['nom'].value,
-        email : this.registerForm.controls['email'].value,
+      let value = {
+        name : this.registerForm.controls['name'].value,
         score : 0
-      }]
+      }
 
       localStorage.setItem(this.registerForm.controls['player'].value, JSON.stringify(value));
+
+      this.router.navigate(["game"]);
     }
   }
 }

@@ -28,11 +28,9 @@ export class GameComponent implements OnInit {
   constructor() {
 
     // Initialise les joueurs
-    let player1 = JSON.parse(localStorage.getItem('player1') || '[]');
-    let player2 = JSON.parse(localStorage.getItem('player2') || '[]');
 
-    this.p1 = new Player(player1[0]["score"], player1[0]["email"], player1[0]["nom"]);
-    this.p2 = new Player(player2[0]["score"], player2[0]["email"], player2[0]["nom"]);
+    this.p1 = new Player(JSON.parse(localStorage.getItem('player1') || '[]'));
+    this.p2 = new Player(JSON.parse(localStorage.getItem('player2') || '[]'));
 
     // Initialise le jeu
     this.initGame();
@@ -140,25 +138,11 @@ export class GameComponent implements OnInit {
 
     if(value === 1){
       this.p1.addScore();
-
-      let value = [{
-        nom : this.p1.name,
-        email : this.p1.email,
-        score : this.p1.score
-      }]
-
-      localStorage.setItem("player1", JSON.stringify(value));
+      this.p1.saveData("player1");
     }
     else if(value === 2){
       this.p2.addScore();
-
-      let value = [{
-        nom : this.p2.name,
-        email : this.p2.email,
-        score : this.p2.score
-      }]
-
-      localStorage.setItem("player2", JSON.stringify(value));
+      this.p2.saveData("player2");
     }
 
     this.messageResult = this.getResultMessage();
@@ -168,13 +152,21 @@ export class GameComponent implements OnInit {
   getResultMessage(): string {
     if (this.gameOver) {
       if (this.gameResult === 0) {
-        return "Égalité.";
+        return "Égalité !";
       }
 
-      return "Le joueur " + this.gameResult + " a gagné.";
+      return this.whoPlayedName + " a gagné !";
     }
 
     return "";
+  }
+
+  // Reset le score des joueurs
+  resetScores(){
+    this.p1.resetScore();
+    this.p1.saveData("player1");
+    this.p2.resetScore();
+    this.p2.saveData("player2");
   }
 
   // Permet d'avoir un nombre aléatoire

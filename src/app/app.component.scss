@@ -1,0 +1,27 @@
+footer{
+    background-color: rgb(170, 167, 159);
+    bottom: 0;
+    height: 50px;
+    position: fixed;
+    width: 100%;
+}
+
+footer tr{
+    color: rgb(255, 255, 255);
+}
+
+footer td{
+    padding-left: 50px;
+}
+
+footer td:hover{
+    color: blue;
+}
+
+a:link {
+    color: rgb(212, 156, 156);
+  }
+
+a:visited {
+    color: rgb(238, 210, 210);
+  }

@@ -1,3 +1,4 @@
+<br><br><br><br>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -7,11 +8,13 @@
                     <h3 style="float: right; background-color: rgb(218, 81, 81); margin: 10px; padding: 15px; border: thick double black; font-size: 25px; color: white;">Score de {{p2.name}}: <span class="score">{{p2.score}}</span></h3>
                 </div>
                 
-                <h1 class="text-center">C'est au tour de <span class="who">{{whoPlayedName}} </span>!</h1>
-
+                <div *ngIf="!gameOver">
+                    <h1 class="text-center">C'est au tour de <span class="who">{{whoPlayedName}} </span>!</h1>
+                </div>
+                <div *ngIf="gameOver">
+                    <h1 class="text-center">{{messageResult}}</h1>
+                </div>
                 <hr>
-
-                
 
                 <div class="d-flex justify-content-center">
                     <mat-grid-list cols="3" rowHeight="1:1" style="width: 100%;">
@@ -21,19 +24,15 @@
                     </mat-grid-list>
                 </div>
 
-                <div *ngIf="gameOver" class="col-md-12 resultModal">
-                    <br>
-                    <hr>
-                    <div class="d-flex justify-content-center">
-                        <div class="result">
-                            <h3 class="text-center">Partie terminée !</h3>
-                            <h4 class="fs-4">{{messageResult}}</h4>
-                            <div class="d-flex justify-content-center">
-                                <button class="btn btn-info" (click)=restartGame()>Nouvelle partie</button>
-                            </div>
+                <br>
+                <hr>
+                <div class="d-flex justify-content-center">
+                    <div class="result">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-info m-3" (click)=restartGame()>Nouvelle partie</button>
+                            <button class="btn btn-info m-3" (click)=resetScores()>Réinitialiser les scores</button>
                         </div>
                     </div>
-                    <hr>
                 </div>
             </div>
         </div>

@@ -1,0 +1,32 @@
+<body>
+    <p>
+        Ici se trouve les scores des 2 joueurs créés.
+    </p>
+
+    <h1>Tableau des résultats actuels : </h1>
+
+    <table>
+        <tr>
+            <th>
+                Noms
+            </th>
+            <td class="rouge">
+                {{ p1.name }}
+            </td>
+            <td class="bleu">
+                {{ p2.name }}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Scores
+            </th>
+            <td class="rouge">
+                {{ p1.score }}
+            </td>
+            <td class="bleu">
+                {{ p2.score }}
+            </td>
+        </tr>
+    </table>
+</body>

@@ -1,25 +1,60 @@
-<div class="formulaire">
-  <form class="example-form" *ngIf="loading" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <table class="example-full-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Nom</mat-label>
-            <input matInput formControlName='nom'>
-          </mat-form-field>
-        </td>
-      </tr>
+<style>
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    margin-top: 150px;
+    align-items: center;
+  }
 
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName='email'>
-          </mat-form-field>
-        </td>
-      </tr>
+  .example-full-width {
+    width: 100%;
+  }
 
-    </table>
-    <button type="submit" mat-raised-button color="primary">Envoyer</button>
-  </form>
-</div>
+  td {
+    padding-right: 8px;
+  }
+
+  button {
+    margin-left: 50px;
+  }
+
+  .formulaire {
+    align-items: center;
+    margin-left: 33%;
+    margin-right: auto;
+  }
+
+  .registerL {
+    margin-top: 15px;
+  }
+</style>
+
+<body>
+  <div class="formulaire">
+    <form class="example-form" *ngIf="loading" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nom</mat-label>
+              <input matInput formControlName='nom'>
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName='email'>
+            </mat-form-field>
+          </td>
+        </tr>
+
+      </table>
+      <button type="submit" mat-raised-button color="primary">Envoyer</button>
+    </form>
+  </div>
+</body>

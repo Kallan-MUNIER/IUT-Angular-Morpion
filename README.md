@@ -1,3 +1,14 @@
+#Prérequis
+
+- Récupérer le projet avec un `git clone ...` 
+- Ensuite ouvrez le projet sur `Visual` par exemple
+- Puis il faut : `ng add @angular/material`
+- Et `ng serve`
+- Puis aller à l'adresse donné !
+
+#######################
+
+
 # ProjetAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.

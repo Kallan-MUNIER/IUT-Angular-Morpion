@@ -9,10 +9,10 @@
                 </div>
                 
                 <div *ngIf="!gameOver">
-                    <h1 class="text-center">C'est au tour de <span class="who">{{whoPlayedName}} </span>!</h1>
+                    <h1 class="text-center">C'est au tour de <span class="who" style="color: gold;">{{whoPlayedName}} </span>!</h1>
                 </div>
                 <div *ngIf="gameOver">
-                    <h1 class="text-center">{{messageResult}}</h1>
+                    <h1 class="text-center" style="color: green; font-weight: bold;">{{messageResult}}</h1>
                 </div>
                 <hr>
 
@@ -25,6 +25,7 @@
                 </div>
 
                 <br>
+                <h1 style="color:rgb(90, 105, 128);"><b>JEU DU MORPION</b></h1>
                 <hr>
                 <div class="d-flex justify-content-center">
                     <div class="result">

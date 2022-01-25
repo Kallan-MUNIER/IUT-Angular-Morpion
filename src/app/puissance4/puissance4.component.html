@@ -1,0 +1,40 @@
+<br><br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="game">
+                <div id="textbox">
+                    <h3 style="float: left; background-color: rgb(96, 159, 218); margin: 10px; padding: 15px; border: thick double black; font-size: 25px; color: white;">Score de {{p1.name}}: <span class="score">{{p1.score}}</span></h3>
+                    <h3 style="float: right; background-color: rgb(218, 81, 81); margin: 10px; padding: 15px; border: thick double black; font-size: 25px; color: white;">Score de {{p2.name}}: <span class="score">{{p2.score}}</span></h3>
+                </div>
+                
+                <div *ngIf="!gameOver">
+                    <h1 class="text-center">C'est au tour de <span class="who">{{whoPlayedName}} </span>!</h1>
+                </div>
+                <div *ngIf="gameOver">
+                    <h1 class="text-center">{{messageResult}}</h1>
+                </div>
+                <hr>
+
+                <div class="d-flex justify-content-center">
+                    <mat-grid-list cols="7" rowHeight="1:1" style="width: 100%;">
+                        <mat-grid-tile *ngFor="let case of allCases; let i = index" (click)=playerClick(i) style="border: 5px solid rgb(153, 189, 167); border-radius: 5px; background-color: rgb(218, 224, 203);">
+                            <app-case-morpion [case]="case"></app-case-morpion>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+
+                <br>
+                <hr>
+                <div class="d-flex justify-content-center">
+                    <div class="result">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-info m-3" (click)=restartGame()>Nouvelle partie</button>
+                            <button class="btn btn-info m-3" (click)=resetScores()>Réinitialiser les scores</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

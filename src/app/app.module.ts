@@ -22,7 +22,7 @@ import { UpperCaseTitlePipe } from './upper-case-title.pipe';
     RegisterComponent,
     HomeComponent,
     ProfilComponent,
-    UpperCaseTitlePipe
+    UpperCaseTitlePipe,
   ],
   imports: [
     BrowserModule,
